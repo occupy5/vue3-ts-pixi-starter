@@ -10,7 +10,10 @@ export const PixiEngine = {
             PixiApp.destroy();
         }
 
-        PixiApp = new PIXI.Application({ width, height});
+        PixiApp = new PIXI.Application({ 
+            width, 
+            height
+        });
 
         // Controllers
         Controller.init();

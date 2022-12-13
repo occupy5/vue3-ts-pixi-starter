@@ -4,8 +4,8 @@ import { PixiEngine } from './pixi/engine';
 
 const canvas: Ref<Node | null> = ref(null);
 
-onMounted(async() => {
-    await PixiEngine.init(800, 600);
+onMounted(() => {
+    PixiEngine.init(800, 600);
     const canvasInfo = PixiEngine.getCanvas();
     // @ts-ignore-error
     canvas.value?.appendChild(canvasInfo);

@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+import { createBackground } from '../pixi/background';
 import { createPlayer } from '../pixi/player';
 import { PixiEngine } from '../pixi/engine';
 import { Scenes } from '../pixi/scenes';
@@ -11,7 +12,7 @@ function SceneMain() {
     if (!engine) {
         engine = PixiEngine.get();
     }
-
+    createBackground(engine)
     createPlayer(engine);
 }
 

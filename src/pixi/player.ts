@@ -36,12 +36,11 @@ async function createPlayer(_engine: PIXI.Application) {
 
     player = new PIXI.Sprite(PIXI.Texture.from(SPRITE_PATH));
 
-    player.anchor.set(0.5);
     player.scale.x = 0.1;
     player.scale.y = 0.1;
     player.position = {
-        x: 800 / 2,
-        y: 600 / 2,
+        x: 40,
+        y: engine.screen.height - 150,
     };
 
     engine.stage.addChild(player);
