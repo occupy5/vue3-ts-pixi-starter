@@ -1,6 +1,6 @@
 # Vue 3 Pixi.js Starter
 
-## Basic Setup
+## Setup
 
 ```bash
 pnpm install
@@ -8,7 +8,7 @@ pnpm install
 pnpm dev
 ```
 
-## Pixi Start 
+## Pixi Start
 
 ## Credit
 

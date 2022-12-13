@@ -7,6 +7,7 @@ const canvas: Ref<Node | null> = ref(null);
 onMounted(async() => {
     await PixiEngine.init(800, 600);
     const canvasInfo = PixiEngine.getCanvas();
+    // @ts-ignore-error
     canvas.value?.appendChild(canvasInfo);
 });
 </script>
