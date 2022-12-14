@@ -12,6 +12,7 @@ let MOVEMENT = {
     LEFT: false,
     RIGHT: false,
     SPRINT: false,
+    JUMP: false
 };
 
 async function createPlayer(_engine: PIXI.Application) {
@@ -32,6 +33,9 @@ async function createPlayer(_engine: PIXI.Application) {
         // LEFT SHIFT
         Controller.addKeyDownEvent(16, () => (MOVEMENT.SPRINT = true));
         Controller.addKeyUpEvent(16, () => (MOVEMENT.SPRINT = false));
+        // JUMP
+        Controller.addKeyDownEvent(32, () => (MOVEMENT.JUMP = true));
+        Controller.addKeyUpEvent(32, () => (MOVEMENT.JUMP = false));
     }
 
     player = new PIXI.Sprite(PIXI.Texture.from(SPRITE_PATH));
@@ -96,8 +100,36 @@ function tick(delta: number) {
     if (MOVEMENT.LEFT) {
         player.position.x -= speed;
         player.transform.skew.set(0.15, 0);
+        console.log('player', player)
     }
 
+    if (MOVEMENT.JUMP) {
+        const  axis = 'y',
+            direction = -1, //to Top
+            gravity = 1,
+            power = 20,
+            jumpAt = player[axis];
+            MOVEMENT.JUMP = true;
+
+            let time = 0;
+                const tick = (deltaMs:number) => {
+                  const jumpHeight = (-gravity / 2) * Math.pow(time, 2) + power * time;
+              
+                  if (jumpHeight < 0) {
+                    MOVEMENT.JUMP = false;
+                    engine.ticker.remove(tick);
+                    // @ts-ignore-error
+                    player[axis] = jumpAt;
+                    return;
+                  }
+              
+                  // @ts-ignore-error
+                  player[axis] = jumpAt + (jumpHeight * direction);
+                  time += deltaMs;
+                }
+              
+                engine.ticker.add(tick);
+    }
     if (!MOVEMENT.LEFT && !MOVEMENT.RIGHT) {
         player.transform.skew.set(0, 0);
     }
