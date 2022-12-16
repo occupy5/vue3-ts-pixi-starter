@@ -47,8 +47,6 @@ async function createPlayer(_engine: PIXI.Application) {
         y: engine.screen.height - 150,
     };
 
-    engine.stage.addChild(player);
-
     if (hasTicker) {
         engine.ticker.remove(tick);
         hasTicker = false;
@@ -56,6 +54,7 @@ async function createPlayer(_engine: PIXI.Application) {
 
     hasTicker = true;
     engine.ticker.add(tick);
+    return player;
 }
 
 function removePlayer() {
@@ -104,31 +103,30 @@ function tick(delta: number) {
     }
 
     if (MOVEMENT.JUMP) {
-        const  axis = 'y',
+        const
             direction = -1, //to Top
             gravity = 1,
             power = 20,
-            jumpAt = player[axis];
+            jumpAt = player.y;
             MOVEMENT.JUMP = true;
 
-            let time = 0;
-                const tick = (deltaMs:number) => {
-                  const jumpHeight = (-gravity / 2) * Math.pow(time, 2) + power * time;
-              
-                  if (jumpHeight < 0) {
-                    MOVEMENT.JUMP = false;
-                    engine.ticker.remove(tick);
-                    // @ts-ignore-error
-                    player[axis] = jumpAt;
-                    return;
-                  }
-              
-                  // @ts-ignore-error
-                  player[axis] = jumpAt + (jumpHeight * direction);
-                  time += deltaMs;
-                }
-              
-                engine.ticker.add(tick);
+        // FIXME:
+        const newPlayer = player;
+        let time = 0;
+        const tick = (deltaMs:number) => {
+            const jumpHeight = (-gravity / 2) * Math.pow(time, 2) + power * time;
+        
+            if (jumpHeight < 0) {
+                MOVEMENT.JUMP = false;
+                engine.ticker.remove(tick);
+                newPlayer.y = jumpAt;
+                return;
+            }
+            newPlayer.y = jumpAt + (jumpHeight * direction);
+            time += deltaMs;
+        }
+        
+        engine.ticker.add(tick);
     }
     if (!MOVEMENT.LEFT && !MOVEMENT.RIGHT) {
         player.transform.skew.set(0, 0);
