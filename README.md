@@ -26,6 +26,7 @@ You can learn about the WebGL on [Getting_started_with_WebGL](https://developer.
 
 + [learningPixi](https://github.com/kittykatattack/learningPixi#installingpixi)
 + [Mowgli vs Evil Snails](https://github.com/pylnata/mowgli)
++ [Comparing Phaser and PixiJS for making 2D games](https://docs.replit.com/tutorials/Comparing-phaser-and-pixi-for-making-games)
 
 ## Credit
 
