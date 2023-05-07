@@ -9,8 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.1.2",
     "pixi.js": "^7.0.5",
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "vue3-pixi-renderer": "^0.3.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
