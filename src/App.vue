@@ -83,8 +83,8 @@ tryMountTicker(stageRef, () => {
   <div>
     <Stage ref="stageRef" :width="width" :height="height">
       <container>
-        <sprite texture="bg.png" :width="width" :height="height" />
-        <sprite texture="player.png" :skew-x="skew.x" :position="position" :scale="0.1" />
+        <sprite texture="/bg.png" :width="width" :height="height" />
+        <sprite texture="/player.png" :skew-x="skew.x" :position="position" :scale="0.1" />
       </container>
     </Stage>
   </div>
