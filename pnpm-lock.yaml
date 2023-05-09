@@ -11,8 +11,8 @@ dependencies:
     specifier: ^3.2.45
     version: 3.2.45
   vue3-pixi-renderer:
-    specifier: ^0.3.0
-    version: 0.3.0(@pixi/utils@7.2.4)(vue@3.2.45)
+    specifier: ^0.5.4
+    version: 0.5.4(@pixi/utils@7.2.4)(vue@3.2.45)
 
 devDependencies:
   '@vitejs/plugin-vue':
@@ -1271,8 +1271,8 @@ packages:
       typescript: 4.9.4
     dev: true
 
-  /vue3-pixi-renderer@0.3.0(@pixi/utils@7.2.4)(vue@3.2.45):
-    resolution: {integrity: sha512-ffls0eWCaQqI3Xgir4kucBD3TCDATVpZ6TlcdXTLMZEsJ8i9XFCqZkydQ6C2jBqAQNM1OM80rUPDFLbUU3ACBQ==}
+  /vue3-pixi-renderer@0.5.4(@pixi/utils@7.2.4)(vue@3.2.45):
+    resolution: {integrity: sha512-GM0W9UObGwJPY4b+JAa+poQHjb5E71W30BLnl7VTys0tu0ht9SEoD/+BbIP+9PNAAx9qhxoh2RXZRu7PLPGIOA==}
     dependencies:
       '@antfu/utils': 0.7.2
       '@vueuse/core': 10.1.2(vue@3.2.45)

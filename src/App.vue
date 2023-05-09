@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 
 import { useMagicKeys } from '@vueuse/core'
 import { Stage, tryMountTicker, useApplication } from 'vue3-pixi-renderer'
 
 const stageRef = ref()
-const app = useApplication(stageRef)
+const app = useApplication()
 const width = ref(800)
 const height = ref(600)
 
@@ -37,19 +37,21 @@ function jop() {
     power = 20,
     jumpAt = position.value.y;
   let time = 0;
-  const remove = tryMountTicker(stageRef, (deltaMs: number) => {
+
+  function jopTick(deltaMs: number) {
     const jumpHeight = (-gravity / 2) * Math.pow(time, 2) + power * time;
     if (jumpHeight < 0) {
       position.value.y = jumpAt;
-      remove()
+      app.value!.ticker.remove(jopTick)
       return;
     }
     position.value.y = jumpAt + (jumpHeight * direction);
     time += deltaMs;
-  })
+  }
+  app.value!.ticker.add(jopTick)
 }
 
-tryMountTicker(stageRef, () => {
+tryMountTicker(() => {
   let speed = 1.25;
   if (shift.value)
     speed += 0.75;
