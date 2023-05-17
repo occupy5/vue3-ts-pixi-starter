@@ -2,9 +2,8 @@
 import { onMounted, reactive, ref } from 'vue';
 
 import { useMagicKeys } from '@vueuse/core'
-import { Stage, tryMountTicker, useApplication } from 'vue3-pixi-renderer'
+import { Stage, tryMountTicker, useApplication } from 'vue3-pixi'
 
-const stageRef = ref()
 const app = useApplication()
 const width = ref(800)
 const height = ref(600)
